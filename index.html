@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <script src="https://rawgit.com/kevin860/slime5/master/slime.js"></script>
+    <script src="slime.js"></script>
     <title>Slime5</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -56,7 +56,7 @@
                             <input type="checkbox" id="battle_mode"/> Allow jumps over net
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Restart Game</button>
+                    <button type="submit" class="btn btn-primary">Apply</button>
                 </form>
             </div>
         </div>
@@ -65,17 +65,16 @@
             function applySettings()
             {
                 var settings = {
-                    ball_radius: parseInt($('#ball_radius').val()),
-                    slime_radius: parseInt($('#slime_radius').val()),
-                    timing_multiplier: parseInt($('#timing_multiplier').val()),
+                    ball_radius: parseFloat($('#ball_radius').val()),
+                    slime_radius: parseFloat($('#slime_radius').val()),
+                    timing_multiplier: parseFloat($('#timing_multiplier').val()),
                     battle_mode: $('#battle_mode')[0].checked,
                     scoring_run_for_super: parseInt($('#super_slime').val())
                 };
                 game.applySettings(settings);
                 return false;
             }
-            $('form input').change(applySettings);
-            $('form').submit(function(){game.restart()})
+            $('form').submit(applySettings)
         </script>
     </div>
 </div>
